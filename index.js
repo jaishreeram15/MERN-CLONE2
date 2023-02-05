@@ -12,10 +12,10 @@ const cookieParser = require("cookie-parser")
 const db =require("./config/mongoose")
 const session = require("express-session")
 const mongoStore = require("connect-mongo")
-const cors = require("cors")
+const cors = require("cors");
 
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin:"*",
     credentials:true
 }))
 
@@ -55,7 +55,10 @@ app.use(session({
     })
   }))
   
-
+app.use(express.static(path.join(__dirname,"build")))
+app.get("/",(req,res)=>{
+    res.sendFile(path.join(__dirname,"build","index.html"))
+})
 console.log("hello world",process.env.PORT)
 
 app.use("/",socketRouter);
