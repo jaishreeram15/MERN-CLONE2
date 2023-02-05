@@ -56,7 +56,7 @@ app.use(session({
   }))
   
 
-console.log("hello world")
+console.log("hello world",process.env.PORT)
 
 app.use("/",socketRouter);
 server.listen("5000",'0.0.0.0',()=>{
