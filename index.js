@@ -59,6 +59,6 @@ app.use(session({
 console.log("hello world",process.env.PORT)
 
 app.use("/",socketRouter);
-server.listen("5000",'0.0.0.0',()=>{
+server.listen(process.env.PORT|| 5000,'0.0.0.0',()=>{
     console.log("port 5000")
 })
