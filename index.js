@@ -62,6 +62,9 @@ app.get("/",(req,res)=>{
 console.log("hello world",process.env.PORT)
 
 app.use("/",socketRouter);
+app.get("*",(req,res)=>{
+    res.redirect("/")
+})
 server.listen(process.env.PORT|| 5000,'0.0.0.0',()=>{
     console.log("port 5000")
 })
