@@ -1,5 +1,5 @@
 const mongo = require("mongoose");
-mongo.connect("mongodb://mongo:QgkUbuz5lUhquoFg9g7U@containers-us-west-188.railway.app:6585")
+mongo.connect("mongodb+srv://test2:test2@cluster0.grk72xg.mongodb.net/?retryWrites=true&w=majority")
 const connect = mongo.connection
 connect.on("error",function(err){console.log("error connecting to database !!",err)})
 connect.once("open",function(){
