@@ -271,7 +271,7 @@ module.exports.checktheApi = async (req,res)=>{
 module.exports.FriendsaddOrUpdate =async (req,res)=>{
     let message={mes:false}
     console.log(req.session.user._id)
-    console.log(req.params.sentto)
+    console.log(req.params.sentto,"fdsafdsafdsafads")
 
     try {
         const friendsRequests = await friendsrequestdb.find({userid:req.params.sentto})
@@ -358,13 +358,13 @@ module.exports.FriendsaddOrUpdate =async (req,res)=>{
                     break
                 }
             }
-            console.log(flag,"/////////////////////////////////")
+            // console.log(flag,"/////////////////////////////////")
             if(flag==0){
                 console.log("not found sent fr id iis :: ",req.session.user._id)
                 const updatearray = await FriendRequestSentDb.findOneAndUpdate({userId:req.session.user._id},{$push:{
                     SentFR:req.params.sentto
                 }},{newI:true})
-                console.log(updatearray,"this the update arry !E#! ")
+                // console.log(updatearray,"this the update arry !E#! ")
             }else{
                 const foundanddelete = await FriendRequestSentDb.updateOne({userId:req.session.user._id},{$pull:{
                     SentFR:req.params.sentto
@@ -407,7 +407,7 @@ module.exports.FriendRequestEnquery = async(req,res)=>{
             const SentfriendsRequest = await FriendRequestSentDb.findOne({userId:req.session.user._id})
             .populate("SentFR","fname lname displayPicture")
             // console.log(SentfriendsRequest,"fdgfsd5g15fds1g5dfs ")
-            if(SentfriendsRequest.SentFR){
+            if(SentfriendsRequest){
                 sentF=SentfriendsRequest.SentFR
             }
             
